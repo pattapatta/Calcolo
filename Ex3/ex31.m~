@@ -1,7 +1,0 @@
-x = -5:1:9;
-M = max(x)
-m = min(x)
-abM = max(abs(x))
-abm = min(abs(x))
-S = sum(x)
-abS = sum(abs(x))
