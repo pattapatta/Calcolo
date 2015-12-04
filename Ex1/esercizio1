@@ -1,0 +1,440 @@
+octave:2> x = 1+a/b+c/(f^2)
+error: 'a' undefined near line 1 column 7
+octave:2> a = 1.12;
+octave:3> b = 2.34;
+octave:4> c = 0.72
+c =  0.72000
+octave:5> d = 0.81;
+octave:6> e = 3
+e =  3
+octave:7> f = 19.83
+f =  19.830
+octave:8> g = 20;
+octave:9> x = 1+a/b+c/(f^2);
+octave:10> s = (b-a)/(d-c);
+octave:11> z = (1-(1/(e^5)))^(-1);
+octave:12> r = 1/(1/a+1/c+1/c+1/d);
+octave:13> y = a*b*(1/c)*(f^2/2);
+octave:14> t = 7*(g^(1/3))+4*g^(0.58);
+octave:15> format long
+octave:16> x s z r y t
+parse error:
+
+  syntax error
+
+>>> x s z r y t
+      ^
+
+octave:16> x 
+x =  1.48046347325164
+octave:17> s
+s =  13.5555555555555
+octave:18> z
+z =  1.00413223140496
+octave:19> r
+r =  0.203865168539326
+octave:20> y
+y =  715.676598000000
+octave:21> t
+t =  41.7339566533148
+octave:22> format short
+octave:23> x
+x =  1.4805
+octave:24> s
+s =  13.556
+octave:25> z
+z =  1.0041
+octave:26> r
+r =  0.20387
+octave:27> y
+y =  715.68
+octave:28> t
+t =  41.734
+octave:29> 
+octave:29> 
+octave:29> 
+octave:29> %*********************%
+octave:29> clear
+octave:30> 
+octave:30> 
+octave:30> a = 2y+(((3+1)9)
+parse error:
+
+  syntax error
+
+>>> a = 2y+(((3+1)9)
+         ^
+
+octave:30> il primo errore è la presenza di una variabile non inizializzata
+error: 'il' undefined near line 1 column 1
+octave:30> (3+1)9
+parse error:
+
+  syntax error
+
+>>> (3+1)9
+         ^
+
+octave:30> il secondo è il mancato bilanciamento delle parentesi
+error: 'il' undefined near line 1 column 1
+octave:30> il terzo è la mancanza del simbolo * prima del 9
+error: 'il' undefined near line 1 column 1
+octave:30> 
+octave:30> 
+octave:30> y=3
+y =  3
+octave:31> 3y
+parse error:
+
+  syntax error
+
+>>> 3y
+     ^
+
+octave:31> e anche tra il 22 e la y
+parse error:
+
+  syntax error
+
+>>> e anche tra il 22 e la y
+          ^
+
+octave:31> 
+octave:31> 
+octave:31> 
+octave:31> b ==2*sin[3]
+parse error:
+
+  syntax error
+
+>>> b ==2*sin[3]
+             ^
+
+octave:31> % in questo caso  == è un errore in quanto non è il simbolo
+octave:31> % dell'assegnamento ma del test di uguaglianza
+octave:31> % inoltre l'argomento di una funzione va messo tra () non tra []
+octave:31> 
+octave:31> c = e^0.5
+c =  1.6487
+octave:32> ( 4-8/4*2)
+ans = 0
+octave:33> ( 4 - 8/(4*2))
+ans =  3
+octave:34> %l'errore sta nella precedenza degli operatori 
+octave:34> c
+c =  1.6487
+octave:35> d = e^(1/2)
+d =  1.6487
+octave:36> 
+octave:36> 
+octave:36> %**********************************%
+octave:36> 
+octave:36> 
+octave:36> 
+octave:36> %Calcolare iil raggio di una sfera che ha volume 30% maggiore di una sgera di raggio 5 cm
+octave:36> 
+octave:36> r1 = 5
+r1 =  5
+octave:37> V1 = 4/3*pi*r1^2
+V1 =  104.72
+octave:38> V2 =V1+(30/100)*V1
+V2 =  136.14
+octave:39> r2 = ((V2/pi)*(3/4))^1/3
+r2 =  10.833
+octave:40> 
+octave:40> %PPPPPPPP%
+octave:40> 
+octave:40> 
+octave:40> ex = inline(" 1+x ");
+octave:41> ex2 = inline(" 1+x+(x^2)/2 ");
+octave:42> % errore assoluto
+octave:42> ea1 = abs(e^(0.1)-ex(0.1))
+ea1 =  0.0051709
+octave:43> ea2 = abs(e^(0.1)-ex2(0.1))
+ea2 =    1.7092e-04
+octave:44> % errore relativo
+octave:44> er1 = (abs(e^(0.1)-ex(0.1)))/e^(0.1)
+er1 =  0.0046788
+octave:45> er2 = (abs(e^(0.1)-ex2(0.1)))/e^(0.1)
+er2 =    1.5465e-04
+octave:46> 
+octave:46> 
+octave:46> %PPPPP%
+octave:46> 
+octave:46> % Radici di un polinomio
+octave:46> % uso il vettore dei coefficienti
+octave:46> p1 = [ 2 -4 -1 ];
+octave:47> p2 = [ 1 0 2 0 -3 ];
+octave:48> p3 = [ 1 0 0 2197];
+octave:49> s1 = roots(p1)
+s1 =
+
+   2.22474
+  -0.22474
+
+octave:50> s2 = roots(p2)
+s2 =
+
+  -0.00000 + 1.73205i
+  -0.00000 - 1.73205i
+  -1.00000 + 0.00000i
+   1.00000 + 0.00000i
+
+octave:51> s3 = roots(p3)
+s3 =
+
+  -13.0000 +  0.0000i
+    6.5000 + 11.2583i
+    6.5000 - 11.2583i
+
+octave:52> 
+octave:52> 
+octave:52> %*******************************%
+octave:52> 
+octave:52> 
+octave:52> % generare il vettore riga e colonna di elementi equidistanti
+octave:52>  y = linspace(1,10,1)
+y =  10
+octave:53>  y = [1:10:1]
+y =  1
+octave:54>  y = [1:10
+> ]
+y =
+
+    1    2    3    4    5    6    7    8    9   10
+
+octave:55> yt = y'
+yt =
+
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+   10
+
+octave:56> % no, riga e colonna sono diverse, riga crescente colonna decrescente
+octave:56> 
+octave:56> y = [1:10]
+y =
+
+    1    2    3    4    5    6    7    8    9   10
+
+octave:57> yt = [10:1]
+yt = [](1x0)
+octave:58> yt = [10:1.-1]
+yt = [](1x0)
+octave:59> yt
+yt = [](1x0)
+octave:60> yt = linspace(10,1,-1)
+yt =  1
+octave:61> yt = linspace(10,-1,1)
+yt = -1
+octave:62> a = [10:-1:1]
+a =
+
+   10    9    8    7    6    5    4    3    2    1
+
+octave:63> yt=1
+yt =  1
+octave:64> yt=a
+yt =
+
+   10    9    8    7    6    5    4    3    2    1
+
+octave:65> % prodotto scalare riga per colonna
+octave:65> y*yt
+error: operator *: nonconformant arguments (op1 is 1x10, op2 is 1x10)
+octave:65> yt = yt'
+yt =
+
+   10
+    9
+    8
+    7
+    6
+    5
+    4
+    3
+    2
+    1
+
+octave:66> psrc = y*yt
+psrc =  220
+octave:67> pscr = yt*y
+pscr =
+
+    10    20    30    40    50    60    70    80    90   100
+     9    18    27    36    45    54    63    72    81    90
+     8    16    24    32    40    48    56    64    72    80
+     7    14    21    28    35    42    49    56    63    70
+     6    12    18    24    30    36    42    48    54    60
+     5    10    15    20    25    30    35    40    45    50
+     4     8    12    16    20    24    28    32    36    40
+     3     6     9    12    15    18    21    24    27    30
+     2     4     6     8    10    12    14    16    18    20
+     1     2     3     4     5     6     7     8     9    10
+
+octave:68> 
+octave:68> 
+octave:68> 
+octave:68> %PPPP%
+octave:68> 
+octave:68> clear
+octave:69> x = linspace(0,1,11)
+x =
+
+ Columns 1 through 7:
+
+   0.00000   0.10000   0.20000   0.30000   0.40000   0.50000   0.60000
+
+ Columns 8 through 11:
+
+   0.70000   0.80000   0.90000   1.00000
+
+octave:70> y = sin(x)
+y =
+
+ Columns 1 through 7:
+
+   0.00000   0.09983   0.19867   0.29552   0.38942   0.47943   0.56464
+
+ Columns 8 through 11:
+
+   0.64422   0.71736   0.78333   0.84147
+
+octave:71> z = y'
+z =
+
+   0.00000
+   0.09983
+   0.19867
+   0.29552
+   0.38942
+   0.47943
+   0.56464
+   0.64422
+   0.71736
+   0.78333
+   0.84147
+
+octave:72> 
+octave:72> 
+octave:72> 
+octave:72> %PPPP%
+octave:72> 
+octave:72> y = [ 25:91:3]
+y = [](1x0)
+octave:73> y = [ 25:3:91]
+y =
+
+ Columns 1 through 15:
+
+   25   28   31   34   37   40   43   46   49   52   55   58   61   64   67
+
+ Columns 16 through 23:
+
+   70   73   76   79   82   85   88   91
+
+octave:74> yt = [100:-2:10]'
+yt =
+
+   100
+    98
+    96
+    94
+    92
+    90
+    88
+    86
+    84
+    82
+    80
+    78
+    76
+    74
+    72
+    70
+    68
+    66
+    64
+    62
+    60
+    58
+    56
+    54
+    52
+    50
+    48
+    46
+    44
+    42
+    40
+    38
+    36
+    34
+    32
+    30
+    28
+    26
+    24
+    22
+    20
+    18
+    16
+    14
+    12
+    10
+
+octave:75> 
+octave:75> z = linspace(-15,-10,33)
+z =
+
+ Columns 1 through 8:
+
+  -15.000  -14.844  -14.688  -14.531  -14.375  -14.219  -14.062  -13.906
+
+ Columns 9 through 16:
+
+  -13.750  -13.594  -13.438  -13.281  -13.125  -12.969  -12.812  -12.656
+
+ Columns 17 through 24:
+
+  -12.500  -12.344  -12.188  -12.031  -11.875  -11.719  -11.562  -11.406
+
+ Columns 25 through 32:
+
+  -11.250  -11.094  -10.938  -10.781  -10.625  -10.469  -10.312  -10.156
+
+ Column 33:
+
+  -10.000
+
+octave:76> 
+octave:76> 
+octave:76> 
+octave:76> 
+octave:76> 
+octave:76> %PPPPPP%
+octave:76> 
+octave:76> %De moivre
+octave:76> 
+octave:76> i
+ans =  0 + 1i
+octave:77> zn = (2)^(60/2)*(cos(60*(pi/4))+i*sin(60*(pi/4)))
+zn = -1.0737e+09 + 5.7871e-06i
+octave:78> z = 1+i
+z =  1 + 1i
+octave:79> znm = z^60
+znm =   -1.0737e+09
+octave:80> z
+z =  1 + 1i
+octave:81> 
+octave:81> 
+octave:81> 
+octave:81> 
+octave:81> diary off

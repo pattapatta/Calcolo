@@ -1,0 +1,134 @@
+%%% f deve essere una matrice bidimensionale
+function [ I ] = trapezi_bidim(x,y,f)
+
+  I = 0;
+  lx = length(x);
+  hx = (x(lx)-x(1))/lx;
+  ly = length(y);
+  hy = (y(ly)-y(1))/ly;
+
+  for i=1:lx
+    for j=1:ly
+      I = I + f(i,j); 
+    endfor
+  endfor
+
+  I = I*(hx*hy)/4;
+
+endfunction
+
+
+% ordine della decomposizione di n, [ a, b ] e m, [ b, c ];
+
+n = 100;
+m = n;
+
+x = 0:1/n:1;
+y = 0:1/m:1;
+
+lx = length(x);
+ly = length(y);
+
+z = zeros(n);
+for i=1:lx
+  for j=1:ly
+    z(i,j) = 1/(1+x(i)+y(j));
+  endfor
+endfor
+
+
+I = trapezi_bidim(x,y,z);
+
+
+%RealI = integrate(f,0,1);
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+
+
+%%%% Formula dei Trapezi composita data una decomposizione delta %%%%
+% x = vettore della decomposizione
+% y = vettore con le valutazioni della funzione nei punti di x
+
+
+
+
+
+function [ I ] = trapezi(x,y)
+  
+  I = 0;
+  n = lenght(x);
+  h = (x(n)-x(0))/n;
+  
+  for i=1:n
+    I = I + (h/2)*[y(i)+y(i+1)];  
+  endfor 
+ 
+endfunction
+
+
+
+function trapezi_bidim(x,y,z)
+
+NC_coeff = [
+                  
+	1/2        ,1/2         ,0          ,0           ,0           ,0          ,0           ,0;
+        1/3        ,4/3         ,1/3        ,0           ,0           ,0          ,0           ,0;
+        3/8        ,9/8         ,9/8        ,3/8         ,0           ,0          ,0           ,0;
+        14/45      ,64/45       ,24/45      ,64/45       ,14/45       ,0          ,0           ,0;
+        95/288     ,375/288     ,250/288    ,250/288     ,375/288     ,95/288     ,0           ,0;
+        41/140     ,216/140     ,27/140     ,272/140     ,27/140      ,216/140    ,41/140      ,0;
+        5257/17208 ,25039/17208 ,9261/17208 ,20923/17208 ,20923/17208 ,9261/17208 ,25039/17208 ,5257/17208
+                
+	   ];
+
+  
+  I = 0;
+  lx = length(x);
+  hx = (x(lx)-x(1))/lx;
+  ly = length(y);
+  hy = (y(ly)-y(1))/ly;
+
+  if (lx > 7 || ly > 7)
+    error(" Coefficienti per le formule di quadratura con n>7 assenti ");
+  endif
+
+  for i=1:lx
+    for j=1:ly
+      I = I + NC_coeff(ly,j)*z(i,j); 
+    endfor
+    I = I*NC_coeff(lx,i);
+  endfor
+
+  I = I*(hx*hy);
+  
+ 
+endfunction
+
+
+n = 5;
+m = n;
+
+x = 0:1/n:1;
+y = 0:1/m:1;
+
+lx = length(x);
+ly = length(y);
+
+z = zeros(n);
+for i=1:lx
+  for j=1:ly
+    z(i,j) = 1/(1+x(i)+y(j));
+  endfor
+endfor
+
+
+I = trapezi_bidim(x,y,z);
+
+
+%RealI = integrate(f,0,1);
+
+

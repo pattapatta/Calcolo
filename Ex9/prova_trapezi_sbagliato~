@@ -1,0 +1,45 @@
+%%% f deve essere una matrice bidimensionale
+function [ I ] = trapezi_bidim(x,y,f)
+
+  I = 0;
+  lx = length(x);
+  hx = (x(lx)-x(1))/lx;
+  ly = length(y);
+  hy = (y(ly)-y(1))/ly;
+
+  for i=1:lx
+    for j=1:ly
+      I = I + f(i,j); 
+    endfor
+  endfor
+
+  I = I*(hx*hy)/4;
+
+endfunction
+
+
+% ordine della decomposizione di n, [ a, b ] e m, [ b, c ];
+
+n = 100;
+m = n;
+
+x = 0:1/n:1;
+y = 0:1/m:1;
+
+lx = length(x);
+ly = length(y);
+
+z = zeros(n);
+for i=1:lx
+  for j=1:ly
+    z(i,j) = 1/(1+x(i)+y(j));
+  endfor
+endfor
+
+
+I = trapezi_bidim(x,y,z);
+
+
+%RealI = integrate(f,0,1);
+
+

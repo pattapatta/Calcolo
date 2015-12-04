@@ -1,0 +1,393 @@
+octave:788> ones(10,1)
+ans =
+
+   1
+   1
+   1
+   1
+   1
+   1
+   1
+   1
+   1
+   1
+
+octave:789> 
+octave:789> 
+octave:789> H = hilb(10);
+octave:790> x = ones(10,1);
+octave:791> 
+octave:791> b = H*x;
+octave:792> b
+b =
+
+   2.92897
+   2.01988
+   1.60321
+   1.34680
+   1.16823
+   1.03490
+   0.93073
+   0.84670
+   0.77725
+   0.71877
+
+octave:793> 
+octave:793> 
+octave:793> y  = H\b
+y =
+
+   1.00000
+   1.00000
+   1.00000
+   1.00002
+   0.99988
+   1.00033
+   0.99947
+   1.00051
+   0.99973
+   1.00006
+
+octave:794> z = [0.001 [
+> 
+> ]
+> ]
+z =  0.0010000
+octave:795> z(2:10) = ([zeros(1,8)])
+error: A(I) = X: X must have the same size as I
+octave:795> z = [0.001,0,0,0,0,0,0,0,0,0]
+z =
+
+   0.0010000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000
+
+octave:796> size(z)
+ans =
+
+    1   10
+
+octave:797> z = z'
+z =
+
+   0.0010000
+   0.0000000
+   0.0000000
+   0.0000000
+   0.0000000
+   0.0000000
+   0.0000000
+   0.0000000
+   0.0000000
+   0.0000000
+
+octave:798> b
+b =
+
+   2.92897
+   2.01988
+   1.60321
+   1.34680
+   1.16823
+   1.03490
+   0.93073
+   0.84670
+   0.77725
+   0.71877
+
+octave:799> c = z+b
+c =
+
+   2.92997
+   2.01988
+   1.60321
+   1.34680
+   1.16823
+   1.03490
+   0.93073
+   0.84670
+   0.77725
+   0.71877
+
+octave:800> y = H\c
+y =
+
+      1.1000
+     -3.9500
+     80.2002
+   -599.6018
+   2523.5292
+  -6305.3267
+   9610.6458
+  -8750.6458
+   4376.8248
+   -922.7856
+
+octave:801> x
+x =
+
+   1
+   1
+   1
+   1
+   1
+   1
+   1
+   1
+   1
+   1
+
+octave:802> er = norm(x-y)/norm(x)
+er =  4852.2
+octave:803> 
+octave:803> 
+octave:803> x10 = linspace(-1,1,10);
+octave:804> x15 = linspace(-1,1,15);
+octave:805> x20 = linspace(-1,1,20);
+octave:806> 
+octave:806> V10 = Vander(x10);
+error: 'Vander' undefined near line 1 column 7
+octave:806> V15 = Vander(x15); 
+error: 'Vander' undefined near line 1 column 7
+octave:806> V20 = Vander(x20);
+error: 'Vander' undefined near line 1 column 7
+octave:806> 
+octave:806> f = inline(" exp(x)+1 ");
+octave:807> 
+octave:807> b10 = f(x10);
+octave:808> b15 = f(x15);
+octave:809> b20 = f(x20);
+octave:810> 
+octave:810> % I sistemi sarebbero genericamente Vx = b, devo trovare x
+octave:810> %   che per comodità chiamerò a, il vettore dei coefficienti.
+octave:810> 
+octave:810> a10 = V10\b10;
+error: 'V10' undefined near line 1 column 7
+octave:810> a15 = V15\b15;
+error: 'V15' undefined near line 1 column 7
+octave:810> a20 = V20\b20;
+error: 'V20' undefined near line 1 column 7
+octave:810> 
+octave:810> clear
+octave:811> clc
+octave:812> 
+octave:812> 
+octave:812> x10 = linspace(-1,1,10);
+octave:813> x15 = linspace(-1,1,15);
+octave:814> x20 = linspace(-1,1,20);
+octave:815> 
+octave:815> V10 = vander(x10);
+octave:816> V15 = vander(x15); 
+octave:817> V20 = vander(x20);
+octave:818> 
+octave:818> f = inline(" exp(x)+1 ");
+octave:819> 
+octave:819> b10 = f(x10);
+octave:820> b15 = f(x15);
+octave:821> b20 = f(x20);
+octave:822> 
+octave:822> % I sistemi sarebbero genericamente Vx = b, devo trovare x
+octave:822> %   che per comodità chiamerò a, il vettore dei coefficienti.
+octave:822> 
+octave:822> a10 = V10\b10;
+error: operator \: nonconformant arguments (op1 is 10x10, op2 is 1x10)
+octave:822> a15 = V15\b15;
+error: operator \: nonconformant arguments (op1 is 15x15, op2 is 1x15)
+octave:822> a20 = V20\b20;
+error: operator \: nonconformant arguments (op1 is 20x20, op2 is 1x20)
+octave:822> 
+octave:822> 
+octave:822> 
+octave:822> x10 = linspace(-1,1,10);
+octave:823> x15 = linspace(-1,1,15);
+octave:824> x20 = linspace(-1,1,20);
+octave:825> 
+octave:825> V10 = vander(x10);
+octave:826> V15 = vander(x15); 
+octave:827> V20 = vander(x20);
+octave:828> 
+octave:828> f = inline(" exp(x)+1 ");
+octave:829> 
+octave:829> b10 = f(x10);
+octave:830> b15 = f(x15);
+octave:831> b20 = f(x20);
+octave:832> 
+octave:832> % I sistemi sarebbero genericamente Vx = b, devo trovare x
+octave:832> %   che per comodità chiamerò a, il vettore dei coefficienti.
+octave:832> 
+octave:832> a10 = V10\b10;
+error: operator \: nonconformant arguments (op1 is 10x10, op2 is 1x10)
+octave:832> a15 = V15\b15;
+error: operator \: nonconformant arguments (op1 is 15x15, op2 is 1x15)
+octave:832> a20 = V20\b20;
+error: operator \: nonconformant arguments (op1 is 20x20, op2 is 1x20)
+octave:832> 
+octave:832> clear
+octave:833> clc
+octave:834> 
+octave:834> 
+octave:834> x10 = linspace(-1,1,10);
+octave:835> x15 = linspace(-1,1,15);
+octave:836> x20 = linspace(-1,1,20);
+octave:837> 
+octave:837> V10 = vander(x10);
+octave:838> V15 = vander(x15); 
+octave:839> V20 = vander(x20);
+octave:840> 
+octave:840> f = inline(" exp(x)+1 ");
+octave:841> 
+octave:841> b10 = f(x10)';
+octave:842> b15 = f(x15)';
+octave:843> b20 = f(x20)';
+octave:844> 
+octave:844> % I sistemi sarebbero genericamente Vx = b, devo trovare x
+octave:844> %   che per comodità chiamerò a, il vettore dei coefficienti.
+octave:844> 
+octave:844> a10 = V10\b10;
+octave:845> a15 = V15\b15;
+octave:846> a20 = V20\b20;
+octave:847> 
+octave:847> a10
+a10 =
+
+   2.8072e-06
+   2.5369e-05
+   1.9838e-04
+   1.3885e-03
+   8.3333e-03
+   4.1667e-02
+   1.6667e-01
+   5.0000e-01
+   1.0000e+00
+   2.0000e+00
+
+octave:848> a15
+a15 =
+
+   3.0570e-11
+   1.6362e-10
+   2.0349e-09
+   2.5048e-08
+   2.7563e-07
+   2.7557e-06
+   2.4802e-05
+   1.9841e-04
+   1.3889e-03
+   8.3333e-03
+   4.1667e-02
+   1.6667e-01
+   5.0000e-01
+   1.0000e+00
+   2.0000e+00
+
+octave:849> a20
+a20 =
+
+  -7.5294e-10
+  -8.7574e-10
+   2.7056e-09
+   3.2346e-09
+  -3.9486e-09
+  -4.8810e-09
+   3.1861e-09
+   6.0128e-09
+   2.3740e-08
+   2.7377e-07
+   2.7561e-06
+   2.4802e-05
+   1.9841e-04
+   1.3889e-03
+   8.3333e-03
+   4.1667e-02
+   1.6667e-01
+   5.0000e-01
+   1.0000e+00
+   2.0000e+00
+
+octave:850> eps = [];
+octave:851> for i=1:10
+>  eps = [ eps, (-1)^(i)*10^(-5) ];
+> endfor
+octave:852> 
+octave:852> 
+octave:852> 
+octave:852> size(eps)
+ans =
+
+    1   10
+
+octave:853> eps = [];
+octave:854> for i=1:20
+>  eps = [ eps, (-1)^(i)*10^(-5) ];
+> endfor
+octave:855> 
+octave:855> b10_1 = b10 + eps([1:10]);
+warning: operator +: automatic broadcasting operation applied
+octave:856> b15_1 = b15 + eps([1:15]);
+warning: operator +: automatic broadcasting operation applied
+octave:857> b20_1 = b20 + eps([1:20]);
+warning: operator +: automatic broadcasting operation applied
+octave:858> b10_1
+b10_1 =
+
+   1.3679   1.3679   1.3679   1.3679   1.3679   1.3679   1.3679   1.3679   1.3679   1.3679
+   1.4594   1.4594   1.4594   1.4594   1.4594   1.4594   1.4594   1.4594   1.4594   1.4594
+   1.5737   1.5738   1.5737   1.5738   1.5737   1.5738   1.5737   1.5738   1.5737   1.5738
+   1.7165   1.7165   1.7165   1.7165   1.7165   1.7165   1.7165   1.7165   1.7165   1.7165
+   1.8948   1.8948   1.8948   1.8948   1.8948   1.8948   1.8948   1.8948   1.8948   1.8948
+   2.1175   2.1175   2.1175   2.1175   2.1175   2.1175   2.1175   2.1175   2.1175   2.1175
+   2.3956   2.3956   2.3956   2.3956   2.3956   2.3956   2.3956   2.3956   2.3956   2.3956
+   2.7429   2.7429   2.7429   2.7429   2.7429   2.7429   2.7429   2.7429   2.7429   2.7429
+   3.1766   3.1766   3.1766   3.1766   3.1766   3.1766   3.1766   3.1766   3.1766   3.1766
+   3.7183   3.7183   3.7183   3.7183   3.7183   3.7183   3.7183   3.7183   3.7183   3.7183
+
+octave:859> eps
+eps =
+
+ Columns 1 through 13:
+
+  -1.0000e-05   1.0000e-05  -1.0000e-05   1.0000e-05  -1.0000e-05   1.0000e-05  -1.0000e-05   1.0000e-05  -1.0000e-05   1.0000e-05  -1.0000e-05   1.0000e-05  -1.0000e-05
+
+ Columns 14 through 20:
+
+   1.0000e-05  -1.0000e-05   1.0000e-05  -1.0000e-05   1.0000e-05  -1.0000e-05   1.0000e-05
+
+octave:860> b10
+b10 =
+
+   1.3679
+   1.4594
+   1.5738
+   1.7165
+   1.8948
+   2.1175
+   2.3956
+   2.7429
+   3.1766
+   3.7183
+
+octave:861> eps([1:10]=
+parse error:
+
+  invalid constant left hand side of assignment
+
+>>> eps([1:10]=
+             ^
+
+octave:861> eps([1:10])
+ans =
+
+  -1.0000e-05   1.0000e-05  -1.0000e-05   1.0000e-05  -1.0000e-05   1.0000e-05  -1.0000e-05   1.0000e-05  -1.0000e-05   1.0000e-05
+
+octave:862> eps([1:10])
+ans =
+
+  -1.0000e-05   1.0000e-05  -1.0000e-05   1.0000e-05  -1.0000e-05   1.0000e-05  -1.0000e-05   1.0000e-05  -1.0000e-05   1.0000e-05
+
+octave:863> 
+octave:863> 
+octave:863> 
+octave:863> eps = [];
+octave:864> for i=1:20
+>  eps = [ eps, (-1)^(i)*10^(-5) ];
+> endfor
+octave:865> 
+octave:865> b10_1 = b10 + eps([1:10])';
